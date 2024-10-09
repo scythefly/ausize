@@ -1,6 +1,7 @@
 use protos::lan_proto as lp;
 
-fn main() {
+#[tokio::main]
+async fn main() {
     env_logger::Builder::new().filter(None, log::LevelFilter::Debug).init();
     log::info!("Hello, world!");
     let request = lp::AllocateRequest {
