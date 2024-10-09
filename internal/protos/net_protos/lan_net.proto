@@ -1,0 +1,18 @@
+syntax = "proto3";
+package api.lan_net.v1;
+
+service Lan {
+  rpc AllocateConn(AllocateRequest) returns (AllocateResponse);
+}
+
+message AllocateRequest {
+  string session_id = 1;
+  string user_id = 2;
+  string local_ip = 3;
+  int32 remote_port = 4;
+}
+
+message AllocateResponse {
+  string remote_addr = 1; // 收到AllocateResponse的客户端用这个地址作为远程地址
+  string local_addr = 2; // 收到AllocateResponse的客户端用这个地址作为本地地址
+}

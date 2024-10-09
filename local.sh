@@ -1,5 +1,5 @@
 #! /bin/bash
 
 
-cargo build --release
+cargo run --release
 ls -lh target/release
