@@ -1,4 +1,7 @@
+mod lan;
+
 use protos::lan_proto as lp;
+use tonic::transport::Server;
 
 #[tokio::main]
 async fn main() {
@@ -11,4 +14,11 @@ async fn main() {
         remote_port: 123,
     };
     log::info!("request: {:?}", request);
+    let addr = "[::1]:61001".parse().unwrap();
+    let lan_service = lan::LanService::default();
+    Server::builder()
+        .add_service(lp::lan_server::LanServer::new(lan_service))
+        .serve(addr)
+        .await
+        .unwrap();
 }
