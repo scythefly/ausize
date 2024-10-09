@@ -11,7 +11,7 @@ log = "0.4.22"
 
 
 [profile.release]
-lto = true
+lto = "fat"
 codegen-units = 1
 panic = 'abort'
 strip = true
